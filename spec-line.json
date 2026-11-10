@@ -19,23 +19,9 @@
         "tooltip": true
     },
     "encoding": {
-        "x": {
-            "field": "x",
-            "type": "quantitative",
-            "title": "X Axis",
-            "axis": {"labelFontSize": 14, "titleFontSize": 16}
-        },
-        "y": {
-            "field": "y",
-            "type": "quantitative",
-            "title": "Y Axis",
-            "axis": {"labelFontSize": 14, "titleFontSize": 16}
-        }
+        "x": {"field": "x", "type": "quantitative", "title": "X Axis"},
+        "y": {"field": "y", "type": "quantitative", "title": "Y Axis"}
     },
     "width": "100%",
-    "height": 300,
-    "config": {
-        "view": {"stroke": "transparent"},
-        "axis": {"domainWidth": 1.5}
-    }
+    "height": 400
 }
