@@ -75,12 +75,16 @@
     </div>
 
     <script>
-        async function loadChart() {
-            const response = await fetch('chart-spec.json');
-            const spec = await response.json();
-            vegaEmbed('#vis', spec, { actions: false, theme: 'default' });
-        }
-        loadChart();
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('chart-spec.json');
+                const spec = await response.json();
+                vegaEmbed('#vis', spec, { actions: false, theme: 'default' });
+            } catch (err) {
+                console.error('Error loading chart:', err);
+                document.getElementById('vis').innerHTML = '<p style="color:red;text-align:center;padding:40px;">Error loading chart: ' + err.message + '</p>';
+            }
+        });
     </script>
 </body>
 </html>
