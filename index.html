@@ -126,21 +126,27 @@
     </div>
 
     <script>
-        async function loadChart(selector, specFile) {
-            try {
-                const response = await fetch(specFile);
-                const spec = await response.json();
-                vegaEmbed(selector, spec, { actions: false, theme: 'default' });
-            } catch (err) {
-                console.error('Error loading ' + specFile + ':', err);
-                document.querySelector(selector).innerHTML = '<p style="color:red;text-align:center;padding:40px;">Error loading ' + specFile + '</p>';
+        document.addEventListener('DOMContentLoaded', function() {
+            async function loadChart(selector, specFile) {
+                try {
+                    const response = await fetch(specFile);
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    const spec = await response.json();
+                    if (typeof vegaEmbed !== 'function') {
+                        throw new Error('vegaEmbed not loaded');
+                    }
+                    vegaEmbed(selector, spec, { actions: false, theme: 'default' });
+                } catch (err) {
+                    console.error('Error loading ' + specFile + ':', err);
+                    document.querySelector(selector).innerHTML = '<p style="color:red;text-align:center;padding:40px;">Error loading ' + specFile + ': ' + err.message + '</p>';
+                }
             }
-        }
 
-        loadChart('#chart-bar', 'spec-bar.json');
-        loadChart('#chart-line', 'spec-line.json');
-        loadChart('#chart-pie', 'spec-pie.json');
-        loadChart('#chart-area', 'spec-area.json');
+            loadChart('#chart-bar', 'spec-bar.json');
+            loadChart('#chart-line', 'spec-line.json');
+            loadChart('#chart-pie', 'spec-pie.json');
+            loadChart('#chart-area', 'spec-area.json');
+        });
     </script>
 </body>
 </html>
