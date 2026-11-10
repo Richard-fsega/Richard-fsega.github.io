@@ -1,0 +1,54 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple bar chart",
+    "data": {
+        "values": [
+            {"category": "A", "value": 30},
+            {"category": "B", "value": 80},
+            {"category": "C", "value": 45},
+            {"category": "D", "value": 60}
+        ]
+    },
+    "mark": {
+        "type": "bar",
+        "cornerRadius": 8,
+        "tooltip": true,
+        "color": "#ff6b6b"
+    },
+    "encoding": {
+        "x": {
+            "field": "category",
+            "type": "nominal",
+            "title": "Category",
+            "axis": {
+                "labelFontSize": 14,
+                "titleFontSize": 16,
+                "labelColor": "#555",
+                "titleColor": "#333"
+            }
+        },
+        "y": {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Value",
+            "axis": {
+                "labelFontSize": 14,
+                "titleFontSize": 16,
+                "labelColor": "#555",
+                "titleColor": "#333"
+            }
+        }
+    },
+    "width": "100%",
+    "height": 400,
+    "config": {
+        "view": {
+            "stroke": "transparent"
+        },
+        "axis": {
+            "domainWidth": 1.5,
+            "domainColor": "#ddd",
+            "tickColor": "#ddd"
+        }
+    }
+}
